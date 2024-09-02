@@ -67,10 +67,6 @@ function manipulatePackageJsonFile() {
   console.log('  • [34mchanged[39m from private to public');
   console.log('  • [34mchanged[39m publishConfig access to public');
 
-  // Step 4: remove 'outDirName/' from "main" & "types"
-  packageJson.main = packageJson.main.replace(`${outDirName}/`, '');
-  packageJson.types = packageJson.types.replace(`${outDirName}/`, '');
-
   // Step 5: create new package.json file in the output folder
   fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson));
   console.log('  • [34mpackage.json[39m file written successfully!');
