@@ -1,11 +1,42 @@
 {
   "name": "az-create-pr",
   "version": "1.0.0",
-  "description": "",
+  "description": "A cli tool for creating a PR in azure",
   "main": "index.js",
+  "type": "module",
+  "private": true,
+  "bin": "./index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf dist",
+    "lint": "eslint -c ./.eslintrc.json \"./src/**/*.ts\"",
+    "format-check": "prettier . --check",
+    "format-fix": "prettier . --write",
+    "test": "node --test",
+    "build": "node ./build.config.js",
+    "dev": "npm run build && node dist/index.js"
   },
-  "author": "",
-  "license": "ISC"
+  "contributors": ["Tal Kohavy <talkohavy@gmail.com> (@Tal Kohavy)"],
+  "keywords": ["azure", "cli", "PR"],
+  "author": "Tal Kohavy <talkohavy@gmail.com> (https://github.com/talkohavy)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/talkohavy/az-create-pr"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "restricted"
+  },
+  "dependencies": {
+    "inquirer": "^9.2.23"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^20.13.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-ezlint": "^1.2.0",
+    "husky": "^9.0.11",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
+  }
 }
