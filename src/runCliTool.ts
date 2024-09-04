@@ -61,17 +61,26 @@ async function selectReviewers() {
     choices: [
       new Separator(),
       {
-        /* cspell: disable-next-line */
         name: 'Evgenii',
-        value: 'evgeni@controlup.com',
+        value: 'evgenii.belitckii@controlup.com',
         checked: true,
       },
       {
-        /* cspell: disable-next-line */
         name: 'Alex Zaidman',
-        /* cspell: disable-next-line */
         value: 'alex.zaidman@controlup.com',
         checked: true,
+      },
+      {
+        name: 'Bar Yedidovich',
+        value: 'bar.yedidovich@controlup.com',
+      },
+      {
+        name: 'Stav Abergel',
+        value: 'stav.abergel@controlup.com',
+      },
+      {
+        name: 'Michael Khaliavski',
+        value: 'michael.khaliavski@controlup.com',
       },
       new Separator(),
     ],
