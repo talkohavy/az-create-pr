@@ -12,7 +12,7 @@ async function runCliTool() {
     const targetBranch = await getTargetBranch();
     const reviewers = await selectReviewers();
 
-    const commandToExecute = `az repos pr create --title ${prTitle} --target-branch ${targetBranch} --open ${reviewers ? `--reviewers ${reviewers.join(' ')}` : ''} --squash --auto-complete`;
+    const commandToExecute = `az repos pr create --title ${prTitle} --target-branch ${targetBranch} --open ${reviewers.length ? `--reviewers ${reviewers.join(' ')}` : ''} --squash --auto-complete`;
 
     console.log(`\n  ${COLORS.green}• Executing: ${COLORS.yellow}${commandToExecute}${COLORS.stop}\n`);
     execSync(commandToExecute);
