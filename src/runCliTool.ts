@@ -1,6 +1,6 @@
 import { execSync } from 'child_process';
 import os from 'os';
-import { Separator, checkbox, input } from '@inquirer/prompts';
+import { Separator, checkbox, confirm, input } from '@inquirer/prompts';
 import { COLORS } from './constants/colors.js';
 import { trimNewLinesAndSpaces } from './utils/trimNewLinesAndSpaces.js';
 
@@ -8,11 +8,12 @@ async function runCliTool() {
   try {
     printCliName();
 
-    const prTitle = await getPrTitle();
-    const targetBranch = await getTargetBranch();
-    const reviewers = await selectReviewers();
+    const prTitle = await inquirePrTitle();
+    const targetBranch = await inquireTargetBranch();
+    const reviewers = await inquireReviewers();
+    const shouldAutoComplete = await inquireShouldAutoComplete();
 
-    const commandToExecute = `az repos pr create --title ${prTitle} --target-branch ${targetBranch} --open ${reviewers.length ? `--reviewers ${reviewers.join(' ')}` : ''} --squash --auto-complete`;
+    const commandToExecute = `az repos pr create --title ${prTitle} --target-branch ${targetBranch} --open ${reviewers.length ? `--reviewers ${reviewers.join(' ')}` : ''} --squash ${shouldAutoComplete ? '--auto-complete' : ''}`;
 
     console.log(`\n  ${COLORS.green}• Executing: ${COLORS.yellow}${commandToExecute}${COLORS.stop}\n`);
     execSync(commandToExecute);
@@ -31,7 +32,7 @@ function printCliName() {
 ${COLORS.stop}`);
 }
 
-async function getPrTitle() {
+async function inquirePrTitle() {
   const currentBranchName = execSync('git branch --show-current').toString();
   const branchNameWithoutNewLine = trimNewLinesAndSpaces(currentBranchName);
 
@@ -44,7 +45,7 @@ async function getPrTitle() {
   return prTitle;
 }
 
-async function getTargetBranch() {
+async function inquireTargetBranch() {
   const targetBranch = await input({
     message: `${COLORS.cyan}Step 2:${COLORS.stop} name of target Branch`,
     default: 'develop',
@@ -54,7 +55,7 @@ async function getTargetBranch() {
   return targetBranch;
 }
 
-async function selectReviewers() {
+async function inquireReviewers() {
   const reviewers = await checkbox({
     message: `${COLORS.cyan}Step 3:${COLORS.stop} Select your PR reviewers`,
     theme: { prefix: '✨' },
@@ -87,6 +88,16 @@ async function selectReviewers() {
   });
 
   return reviewers;
+}
+
+async function inquireShouldAutoComplete() {
+  const shouldAutoComplete = await confirm({
+    message: `${COLORS.cyan}Step 4:${COLORS.stop} Should auto-complete? ${COLORS.black}(Yes)`,
+    default: true,
+    theme: { prefix: '✨' },
+  });
+
+  return shouldAutoComplete;
 }
 
 export { runCliTool };
