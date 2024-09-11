@@ -1,5 +1,11 @@
 # az-create-pr
 
+## 1.0.4
+
+### Patch Changes
+
+- asking 1 more question - confirming the auto-complete
+
 ## 1.0.3
 
 ### Patch Changes
