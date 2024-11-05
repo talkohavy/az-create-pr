@@ -1,5 +1,11 @@
 # az-create-pr
 
+## 1.0.6
+
+### Patch Changes
+
+- forgot to reduce the number of the step
+
 ## 1.0.5
 
 ### Patch Changes
