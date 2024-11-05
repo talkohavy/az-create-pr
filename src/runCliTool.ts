@@ -1,8 +1,10 @@
 import { execSync } from 'child_process';
 import os from 'os';
-import { Separator, checkbox, confirm, input } from '@inquirer/prompts';
+import { confirm, input } from '@inquirer/prompts';
 import { COLORS } from './constants/colors.js';
 import { trimNewLinesAndSpaces } from './utils/trimNewLinesAndSpaces.js';
+
+// import { Separator, checkbox, confirm, input } from '@inquirer/prompts';
 
 async function runCliTool() {
   try {
@@ -10,10 +12,11 @@ async function runCliTool() {
 
     const prTitle = await inquirePrTitle();
     const targetBranch = await inquireTargetBranch();
-    const reviewers = await inquireReviewers();
+    // const reviewers = await inquireReviewers();
     const shouldAutoComplete = await inquireShouldAutoComplete();
 
-    const commandToExecute = `az repos pr create --title ${prTitle} --target-branch ${targetBranch} --open ${reviewers.length ? `--reviewers ${reviewers.join(' ')}` : ''} --squash ${shouldAutoComplete ? '--auto-complete' : ''}`;
+    const commandToExecute = `az repos pr create --title ${prTitle} --target-branch ${targetBranch} --open --squash ${shouldAutoComplete ? '--auto-complete' : ''}`;
+    // const commandToExecute = `az repos pr create --title ${prTitle} --target-branch ${targetBranch} --open ${reviewers.length ? `--reviewers ${reviewers.join(' ')}` : ''} --squash ${shouldAutoComplete ? '--auto-complete' : ''}`;
 
     console.log(`\n  ${COLORS.green}• Executing: ${COLORS.yellow}${commandToExecute}${COLORS.stop}\n`);
     execSync(commandToExecute);
@@ -55,40 +58,40 @@ async function inquireTargetBranch() {
   return targetBranch;
 }
 
-async function inquireReviewers() {
-  const reviewers = await checkbox({
-    message: `${COLORS.cyan}Step 3:${COLORS.stop} Select your PR reviewers`,
-    theme: { prefix: '✨' },
-    choices: [
-      new Separator(),
-      {
-        name: 'Evgenii',
-        value: 'evgenii.belitckii@controlup.com',
-        checked: true,
-      },
-      {
-        name: 'Alex Zaidman',
-        value: 'alex.zaidman@controlup.com',
-        checked: true,
-      },
-      {
-        name: 'Bar Yedidovich',
-        value: 'bar.yedidovich@controlup.com',
-      },
-      {
-        name: 'Stav Abergel',
-        value: 'stav.abergel@controlup.com',
-      },
-      {
-        name: 'Michael Khaliavski',
-        value: 'michael.khaliavski@controlup.com',
-      },
-      new Separator(),
-    ],
-  });
+// async function inquireReviewers() {
+//   const reviewers = await checkbox({
+//     message: `${COLORS.cyan}Step 3:${COLORS.stop} Select your PR reviewers`,
+//     theme: { prefix: '✨' },
+//     choices: [
+//       new Separator(),
+//       {
+//         name: 'Evgenii',
+//         value: 'evgenii.belitckii@controlup.com',
+//         checked: true,
+//       },
+//       {
+//         name: 'Alex Zaidman',
+//         value: 'alex.zaidman@controlup.com',
+//         checked: true,
+//       },
+//       {
+//         name: 'Bar Yedidovich',
+//         value: 'bar.yedidovich@controlup.com',
+//       },
+//       {
+//         name: 'Stav Abergel',
+//         value: 'stav.abergel@controlup.com',
+//       },
+//       {
+//         name: 'Michael Khaliavski',
+//         value: 'michael.khaliavski@controlup.com',
+//       },
+//       new Separator(),
+//     ],
+//   });
 
-  return reviewers;
-}
+//   return reviewers;
+// }
 
 async function inquireShouldAutoComplete() {
   const shouldAutoComplete = await confirm({
