@@ -1,5 +1,11 @@
 # az-create-pr
 
+## 1.0.5
+
+### Patch Changes
+
+- gave up the reviewers inquire
+
 ## 1.0.4
 
 ### Patch Changes
