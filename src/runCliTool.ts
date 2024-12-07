@@ -96,7 +96,7 @@ async function inquireTargetBranch() {
 async function inquireShouldAutoComplete() {
   const shouldAutoComplete = await confirm({
     message: `${COLORS.cyan}Step 3:${COLORS.stop} Should auto-complete? ${COLORS.black}(Yes)`,
-    default: true,
+    default: false,
     theme: { prefix: '✨' },
   });
 
