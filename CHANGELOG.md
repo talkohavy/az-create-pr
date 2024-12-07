@@ -1,5 +1,11 @@
 # az-create-pr
 
+## 1.0.7
+
+### Patch Changes
+
+- inquireShouldAutoComplete now defaults to false instead of true
+
 ## 1.0.6
 
 ### Patch Changes
