@@ -11,9 +11,9 @@ import { getContext } from '../../common/utils/getContext.js';
 import { logger } from '../../common/utils/logger/logger.js';
 
 export async function createPR() {
-  console.log(bigTextAzCreatePrTool);
-
   const context = getContext();
+
+  console.log(bigTextAzCreatePrTool);
 
   if (!context) throw new Error('No context found!');
 

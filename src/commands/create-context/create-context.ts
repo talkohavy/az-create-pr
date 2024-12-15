@@ -45,7 +45,7 @@ export async function createContext(props: ContextData) {
 
   const newContext: Context = {
     defaultTargetBranch: 'develop',
-    reviewers: prReviewers.split(','),
+    reviewers: prReviewers ? prReviewers.split(',') : [],
     autoComplete: {
       default: false,
       skip: false,

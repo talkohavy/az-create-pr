@@ -23,5 +23,7 @@ export function currentContext() {
   logger.info(`${COLORS.green}Default target branch:${COLORS.stop} ${context.defaultTargetBranch}`);
   logger.info(`${COLORS.green}Default auto-complete:${COLORS.stop} ${context.autoComplete.default}`);
   logger.info(`${COLORS.green}Should skip auto-complete:${COLORS.stop} ${context.autoComplete.skip}`);
-  logger.info(`${COLORS.green}Reviewers:${COLORS.stop} ${context.reviewers}`);
+  logger.info(`${COLORS.green}Reviewers:${COLORS.stop} [${context.reviewers.join(', ')}]`, {
+    newLineAfter: true,
+  });
 }

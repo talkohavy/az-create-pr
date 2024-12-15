@@ -2,9 +2,11 @@ import { input } from '@inquirer/prompts';
 import { COLORS } from '../../../common/constants/colors.js';
 
 export async function inquireNewReviewersList() {
-  console.log(`${COLORS.green} ✨  Enter all reviewers, separated by a comma delimiter.`);
+  console.log(
+    `${COLORS.green} ✨  Insert all reviewers, separated by a comma delimiter ${COLORS.black}(leave empty to skip)${COLORS.stop}`,
+  );
 
-  const reviewersAsStr = await input({ message: 'New Reviewers List:' });
+  const reviewersAsStr = await input({ message: 'Reviewers List:' });
 
   return reviewersAsStr;
 }
