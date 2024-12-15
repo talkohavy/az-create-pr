@@ -13,6 +13,9 @@
     "format-fix": "prettier . --write",
     "test": "node --test",
     "build": "node ./build.config.js",
+    "dev-create-context": "node dist/index.js create-context",
+    "dev-use-context": "node dist/index.js use-context",
+    "dev-current-context": "node dist/index.js current-context",
     "dev": "node dist/index.js"
   },
   "contributors": ["Tal Kohavy <talkohavy@gmail.com> (@Tal Kohavy)"],
