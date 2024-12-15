@@ -13,7 +13,7 @@
     "format-fix": "prettier . --write",
     "test": "node --test",
     "build": "node ./build.config.js",
-    "dev": "npm run build && node dist/index.js"
+    "dev": "node dist/index.js"
   },
   "contributors": ["Tal Kohavy <talkohavy@gmail.com> (@Tal Kohavy)"],
   "keywords": ["azure", "cli", "PR"],
@@ -27,15 +27,17 @@
     "registry": "https://registry.npmjs.org/",
     "access": "restricted"
   },
+  "dependencies": {
+    "@inquirer/prompts": "^5.3.8",
+    "yargs": "^17.7.2"
+  },
   "devDependencies": {
     "@types/node": "^20.13.0",
+    "@types/yargs": "^17.0.33",
     "eslint": "^8.57.0",
     "eslint-plugin-ezlint": "^1.2.0",
     "husky": "^9.0.11",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5"
-  },
-  "dependencies": {
-    "@inquirer/prompts": "^5.3.8"
   }
 }
