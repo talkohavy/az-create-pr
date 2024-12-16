@@ -17,6 +17,7 @@ import path from 'path';
  */
 
 const ROOT_PROJECT = process.cwd();
+const mode = process.env.NODE_ENV;
 
 const outDirName = 'dist';
 
@@ -28,6 +29,8 @@ async function buildPackageConfig() {
   buildWithTsc();
 
   copyStaticFiles();
+
+  updateVersionTemplates(); // <--- must come AFTER build!
 
   manipulatePackageJsonFile(); // <--- must come AFTER copy of static files
 
@@ -45,31 +48,10 @@ function cleanDistDirectory() {
 
 function buildWithTsc() {
   console.log('[32m- Step 2:[39m build the output dir');
-  execSync('tsc -p ./tsconfig.json');
-}
 
-function manipulatePackageJsonFile() {
-  console.log('[32m- Step 5:[39m copy & manipulate the package.json file');
+  const flags = mode === 'production' ? ' --sourceMap false --declaration false' : '';
 
-  const packageJsonPath = path.resolve(ROOT_PROJECT, outDirName, 'package.json');
-
-  // Step 1: get the original package.json file
-  /** @type {PackageJson} */
-  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath).toString());
-
-  // Step 2: Remove all scripts
-  delete packageJson.scripts;
-  console.log('  • [34mdeleted[39m `scripts` key');
-
-  // Step 3: Change from private to public
-  delete packageJson.private;
-  packageJson.publishConfig.access = 'public';
-  console.log('  • [34mchanged[39m from private to public');
-  console.log('  • [34mchanged[39m publishConfig access to public');
-
-  // Step 5: create new package.json file in the output folder
-  fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson));
-  console.log('  • [34mpackage.json[39m file written successfully!');
+  execSync(`tsc -p ./tsconfig.json${flags}`);
 }
 
 function copyStaticFiles() {
@@ -96,4 +78,41 @@ function copyStaticFiles() {
       throw new Error('File MUST exists in order to PASS build process! cp operation failed...');
     }
   });
+}
+
+function updateVersionTemplates() {
+  console.log('[32m- Step 4:[39m update version templates with version from package.json');
+
+  /** @type {PackageJson} */
+  const packageJson = JSON.parse(fs.readFileSync('./package.json').toString());
+  const { version } = packageJson;
+
+  const showVersionFuncPath = path.resolve(process.cwd(), 'dist', 'common', 'utils', 'showVersion.js');
+  const showVersionFuncContent = fs.readFileSync(showVersionFuncPath, 'utf-8');
+  const updatedShowVersionFuncContent = showVersionFuncContent.replace('{{version}}', version);
+  fs.writeFileSync(showVersionFuncPath, updatedShowVersionFuncContent);
+}
+
+function manipulatePackageJsonFile() {
+  console.log('[32m- Step 5:[39m copy & manipulate the package.json file');
+
+  const packageJsonPath = path.resolve(ROOT_PROJECT, outDirName, 'package.json');
+
+  // Step 1: get the original package.json file
+  /** @type {PackageJson} */
+  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath).toString());
+
+  // Step 2: Remove all scripts
+  delete packageJson.scripts;
+  console.log('  • [34mdeleted[39m `scripts` key');
+
+  // Step 3: Change from private to public
+  delete packageJson.private;
+  packageJson.publishConfig.access = 'public';
+  console.log('  • [34mchanged[39m from private to public');
+  console.log('  • [34mchanged[39m publishConfig access to public');
+
+  // Step 5: create new package.json file in the output folder
+  fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson));
+  console.log('  • [34mpackage.json[39m file written successfully!');
 }
