@@ -16,6 +16,7 @@ import {
   deleteContextCommandString,
   deleteContextDescription,
 } from './commands/delete-context/delete-context.js';
+import { reviewerBuilder, reviewerCommandString, reviewerDescription } from './commands/reviewer/reviewer.js';
 import {
   useContextBuilder,
   useContextCommandString,
@@ -63,6 +64,7 @@ const yargsInstance = yargs(hideBin(process.argv))
    * IMPORTANT! Do NOT use the 4 parameters, which is the handler, since it cancels out the help for sub-commands.
    */
   .command(configCommandString, configDescription, configBuilder)
+  .command(reviewerCommandString, reviewerDescription, reviewerBuilder)
   .command(createContextCommandString, createContextDescription, createContextBuilder)
   .command(useContextCommandString, useContextDescription, useContextBuilder)
   .command(currentContextCommandString, currentContextDescription, __no_op__)

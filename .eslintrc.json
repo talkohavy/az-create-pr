@@ -5,7 +5,8 @@
     "import/extensions": "off",
     "sort-exports/sort-exports": "off",
     "import/exports-last": "off",
-    "jsdoc/tag-lines": "off"
+    "jsdoc/tag-lines": "off",
+    "@stylistic/operator-linebreak": "off"
   },
   "ignorePatterns": ["dist"]
 }

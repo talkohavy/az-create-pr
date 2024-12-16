@@ -5,5 +5,6 @@ export enum Commands {
   DeleteContext = 'delete-context',
   UseContext = 'use-context',
   Config = 'config',
+  Reviewer = 'reviewer',
   Main = 'main',
 }

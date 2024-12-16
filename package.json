@@ -15,6 +15,7 @@
     "build": "export NODE_ENV=production && node ./build.config.js",
     "build:dev": "node ./build.config.js",
     "dev-config": "node dist/index.js config",
+    "dev-reviewer": "node dist/index.js reviewer",
     "dev-create-context": "node dist/index.js create-context",
     "dev-use-context": "node dist/index.js use-context",
     "dev-current-context": "node dist/index.js current-context",
