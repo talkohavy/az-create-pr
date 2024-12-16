@@ -1,5 +1,14 @@
 # az-create-pr
 
+## 1.0.11
+
+### Patch Changes
+
+- The reviewers structure had changed. No more just a simple string. Now an object with `name`, `email`, and `checked`.
+- Created 2 more inquires: `inquireConfirm` and `inquireValue`, under common/utils/inquires.
+- `inquireSelectFromList` moved under common/utils/inquires.
+- Added the `reviewer` command to add, updated, and delete a reviewer. You can use the --name, --email, and --checked to skip inquires, and just have the values set for the add or update commands.
+
 ## 1.0.10
 
 ### Patch Changes
