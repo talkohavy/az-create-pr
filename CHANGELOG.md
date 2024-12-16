@@ -1,5 +1,12 @@
 # az-create-pr
 
+## 1.0.10
+
+### Patch Changes
+
+- Added the Json Colorizer.
+- Using the Json Colorizer to paint the response of currentContext
+
 ## 1.0.9
 
 ### Patch Changes
