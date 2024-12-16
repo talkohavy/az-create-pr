@@ -1,5 +1,6 @@
 import { execSync } from 'child_process';
 import { Separator, checkbox, confirm, input, select } from '@inquirer/prompts';
+import { Reviewer } from '../../config/types.js';
 import { COLORS } from '../constants/colors.js';
 import { trimNewLinesAndSpaces } from '../utils/trimNewLinesAndSpaces.js';
 
@@ -36,17 +37,13 @@ export async function inquireTargetBranch() {
   return targetBranch;
 }
 
-export async function inquireReviewers(reviewersList: Array<string>) {
+export async function inquireReviewers(reviewersList: Array<Reviewer>) {
   const reviewers = await checkbox({
     message: `${COLORS.cyan}Step 3:${COLORS.stop} Select your PR reviewers`,
     theme: { prefix: '✨' },
     choices: [
       new Separator(),
-      ...reviewersList.map((reviewer) => ({
-        name: reviewer,
-        value: reviewer,
-        checked: true,
-      })),
+      ...reviewersList.map(({ name, email, checked }) => ({ name, value: email, checked })),
       new Separator(),
     ],
   });

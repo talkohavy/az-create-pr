@@ -4,32 +4,24 @@ import { logger } from '../../common/utils/logger/logger.js';
 import { loadConfig, saveConfig } from '../../config/config.js';
 import { Context } from '../../config/types.js';
 import { inquireNewContextName } from './helpers/inquireNewContextName.js';
-import { inquireNewReviewersList } from './helpers/inquireNewReviewersList.js';
 
 export const createContextCommandString = 'create-context [name] [reviewers]';
 export const createContextDescription = 'Create a new context.';
 
 export const createContextBuilder: any = (yargs: Argv) => {
-  yargs
-    .positional('name', {
-      describe: 'The name of the context',
-      type: 'string',
-      demandOption: true,
-    })
-    .positional('reviewers', {
-      describe: 'The reviewers list to choose from',
-      type: 'string',
-      demandOption: true,
-    });
+  yargs.positional('name', {
+    describe: 'The name of the context',
+    type: 'string',
+    demandOption: true,
+  });
 };
 
-type ContextData = {
+type CreateContextProps = {
   name: string;
-  reviewers: string;
 };
 
-export async function createContext(props: ContextData) {
-  const { name, reviewers } = props;
+export async function createContext(props: CreateContextProps) {
+  const { name } = props;
 
   const config = loadConfig();
 
@@ -41,11 +33,9 @@ export async function createContext(props: ContextData) {
     process.exit(1);
   }
 
-  const prReviewers = reviewers ?? (await inquireNewReviewersList());
-
   const newContext: Context = {
     defaultTargetBranch: 'develop',
-    reviewers: prReviewers ? prReviewers.split(',') : [],
+    reviewers: [],
     autoComplete: {
       default: false,
       skip: false,
