@@ -1,5 +1,5 @@
 import { execSync } from 'child_process';
-import { Separator, checkbox, confirm, input, select } from '@inquirer/prompts';
+import { Separator, checkbox, confirm, input } from '@inquirer/prompts';
 import { Reviewer } from '../../config/types.js';
 import { COLORS } from '../constants/colors.js';
 import { trimNewLinesAndSpaces } from '../utils/trimNewLinesAndSpaces.js';
@@ -49,18 +49,4 @@ export async function inquireReviewers(reviewersList: Array<Reviewer>) {
   });
 
   return reviewers;
-}
-
-export async function inquireSelectFromList(optionsArray: Array<string>, name: string) {
-  const options = optionsArray.map((name) => ({ name, value: name, disabled: false }));
-
-  console.log('');
-
-  const selectedOption = await select({
-    message: `✨ ${COLORS.green}Choose the ${name}:${COLORS.stop}`,
-    choices: [new Separator(), ...options, new Separator()],
-    loop: false,
-  });
-
-  return selectedOption;
 }

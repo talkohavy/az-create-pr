@@ -1,6 +1,6 @@
 import { Argv } from 'yargs';
 import { COLORS } from '../../common/constants/colors.js';
-import { inquireSelectFromList } from '../../common/inquires/index.js';
+import { inquireSelectFromList } from '../../common/utils/inquires/inquireSelectFromList.js';
 import { logger } from '../../common/utils/logger/logger.js';
 import { loadConfig, saveConfig } from '../../config/config.js';
 
