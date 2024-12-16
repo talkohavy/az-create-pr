@@ -1,5 +1,11 @@
 # az-create-pr
 
+## 1.0.9
+
+### Patch Changes
+
+- added the config command
+
 ## 1.0.8
 
 ### Patch Changes
