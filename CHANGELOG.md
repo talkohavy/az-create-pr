@@ -1,5 +1,13 @@
 # az-create-pr
 
+## 1.0.8
+
+### Patch Changes
+
+- added line-break before & after currentContext No context is currently set message
+- export COLORS
+- new approach to az-create-pr tool
+
 ## 1.0.7
 
 ### Patch Changes

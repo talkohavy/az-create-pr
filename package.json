@@ -1,6 +1,6 @@
 {
   "name": "az-create-pr",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A cli tool for creating a PR in azure",
   "main": "index.js",
   "type": "module",
