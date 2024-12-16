@@ -1,4 +1,5 @@
 import { COLORS } from '../../common/constants/colors.js';
+import { colorizeJson } from '../../common/utils/colorize-json/colorize-json.js';
 import { logger } from '../../common/utils/logger/logger.js';
 import { loadConfig } from '../../config/config.js';
 
@@ -19,11 +20,13 @@ export function currentContext() {
 
   const context = config.contexts[config.currentContext]!;
 
-  logger.info(`${COLORS.green}Current context:${COLORS.stop} ${config.currentContext}`, { newLineBefore: true });
-  logger.info(`${COLORS.green}Default target branch:${COLORS.stop} ${context.defaultTargetBranch}`);
-  logger.info(`${COLORS.green}Default auto-complete:${COLORS.stop} ${context.autoComplete.default}`);
-  logger.info(`${COLORS.green}Should skip auto-complete:${COLORS.stop} ${context.autoComplete.skip}`);
-  logger.info(`${COLORS.green}Reviewers:${COLORS.stop} [${context.reviewers.join(', ')}]`, {
+  logger.info(`${COLORS.green}Context name:${COLORS.stop} ${config.currentContext}`, {
+    newLineBefore: true,
     newLineAfter: true,
   });
+
+  const colorizedJson = colorizeJson(JSON.stringify(context, null, 2));
+
+  console.log(colorizedJson);
+  console.log('');
 }
