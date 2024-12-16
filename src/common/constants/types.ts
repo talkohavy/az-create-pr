@@ -4,5 +4,6 @@ export enum Commands {
   CurrentContext = 'current-context',
   DeleteContext = 'delete-context',
   UseContext = 'use-context',
+  Config = 'config',
   Main = 'main',
 }

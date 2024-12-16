@@ -4,6 +4,7 @@ import os from 'os';
 import { hideBin } from 'yargs/helpers';
 import yargs from 'yargs/yargs';
 import { commandMapper } from './commandMapper.js';
+import { configBuilder, configCommandString, configDescription } from './commands/config/config.js';
 import {
   createContextBuilder,
   createContextCommandString,
@@ -61,6 +62,7 @@ const yargsInstance = yargs(hideBin(process.argv))
    *
    * IMPORTANT! Do NOT use the 4 parameters, which is the handler, since it cancels out the help for sub-commands.
    */
+  .command(configCommandString, configDescription, configBuilder)
   .command(createContextCommandString, createContextDescription, createContextBuilder)
   .command(useContextCommandString, useContextDescription, useContextBuilder)
   .command(currentContextCommandString, currentContextDescription, __no_op__)

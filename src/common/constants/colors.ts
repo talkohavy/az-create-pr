@@ -2,7 +2,7 @@ const color = (num: number) => `\x1b[${num}m`;
 
 export const COLORS = {
   black: color(30),
-  blink: color(5),
+  bold: color(5),
   blue: color(34),
   bright: color(1),
   cyan: color(36),

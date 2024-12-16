@@ -4,7 +4,8 @@
   "rules": {
     "import/extensions": "off",
     "sort-exports/sort-exports": "off",
-    "import/exports-last": "off"
+    "import/exports-last": "off",
+    "jsdoc/tag-lines": "off"
   },
   "ignorePatterns": ["dist"]
 }

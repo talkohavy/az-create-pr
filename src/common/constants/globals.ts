@@ -4,6 +4,7 @@ import { COLORS } from './colors.js';
 
 export const AZ_CREATE_PR_TOOL_NAME = 'az-create-pr';
 export const CONFIG_PATH = path.join(os.homedir(), `.${AZ_CREATE_PR_TOOL_NAME}`, 'config.json');
+export const OPEN_HELP_ERROR = 'OPEN_HELP';
 
 export const bigTextAzCreatePrTool = `${COLORS.blue}
     _     _____    ____                   _          ____  ____  

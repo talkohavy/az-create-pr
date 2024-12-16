@@ -1,3 +1,4 @@
+import { config } from './commands/config/config.js';
 import { createContext } from './commands/create-context/create-context.js';
 import { createPR } from './commands/create-pr/create-pr.js';
 import { currentContext } from './commands/current-context/current-context.js';
@@ -10,6 +11,7 @@ const COMMAND_MAPPER = {
   [Commands.CurrentContext]: currentContext,
   [Commands.DeleteContext]: deleteContext,
   [Commands.UseContext]: useContext,
+  [Commands.Config]: config,
   [Commands.Main]: createPR,
 };
 
