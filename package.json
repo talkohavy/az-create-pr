@@ -12,6 +12,8 @@
     "format-check": "prettier . --check",
     "format-fix": "prettier . --write",
     "test": "node --test",
+    "esbuild": "export NODE_ENV=production && node esbuild.config.mjs",
+    "esbuild:dev": "export NODE_ENV=development && node esbuild.config.mjs",
     "build": "export NODE_ENV=production && node ./build.config.js",
     "build:dev": "node ./build.config.js",
     "dev-config": "node dist/index.js config",
@@ -41,6 +43,7 @@
   "devDependencies": {
     "@types/node": "^20.13.0",
     "@types/yargs": "^17.0.33",
+    "esbuild": "^0.24.0",
     "eslint": "^8.57.0",
     "eslint-plugin-ezlint": "^1.2.0",
     "husky": "^9.0.11",
