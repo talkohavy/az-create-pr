@@ -1,5 +1,11 @@
 # az-create-pr
 
+## 1.0.13
+
+### Patch Changes
+
+- BUGFIX: During build, need to change type from 'module' to 'commonjs'.
+
 ## 1.0.12
 
 ### Patch Changes
