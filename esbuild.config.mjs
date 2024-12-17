@@ -9,6 +9,7 @@ import * as esbuild from 'esbuild';
  *   version: string,
  *   private?: string | boolean,
  *   main: string,
+ *   type: 'module' | 'commonjs'
  *   types: string,
  *   scripts?: Record<string, string>,
  *   publishConfig: {
@@ -133,6 +134,10 @@ function manipulatePackageJsonFile() {
   packageJson.publishConfig.access = 'public';
   console.log('  • [34mchanged[39m from private to public');
   console.log('  • [34mchanged[39m publishConfig access to public');
+
+  // Step 4: Change type module to commonjs
+  packageJson.type = 'commonjs';
+  console.log('  • [34mchanged[39m from module to commonjs');
 
   // Step 5: create new package.json file in the output folder
   fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson));
