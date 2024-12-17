@@ -1,5 +1,11 @@
 # az-create-pr
 
+## 1.0.14
+
+### Patch Changes
+
+- The package is now using `esbuild` as its bundler. Faster builds, and bundle size is 50% less.
+
 ## 1.0.13
 
 ### Patch Changes
