@@ -1,5 +1,11 @@
 # az-create-pr
 
+## 1.0.12
+
+### Patch Changes
+
+- We are now using esbuild to bundle our code, so it weighs much much less.
+
 ## 1.0.11
 
 ### Patch Changes
