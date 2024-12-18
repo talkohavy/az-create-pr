@@ -24,14 +24,25 @@ export default async function updateReviewer(props: UpdateReviewerProps) {
   const reviewerToUpdate = context.reviewers.find((r) => r.name === nameOfReviewerToUpdate)!;
 
   reviewerToUpdate.name =
-    name || (await inquireValue({ message: 'Reviewer name:', defaultValue: reviewerToUpdate.name }));
+    name ||
+    (await inquireValue({
+      message: `${COLORS.cyan}Reviewer name:${COLORS.stop}`,
+      defaultValue: reviewerToUpdate.name,
+    }));
 
   reviewerToUpdate.email =
-    email || (await inquireValue({ message: 'Reviewer email:', defaultValue: reviewerToUpdate.email }));
+    email ||
+    (await inquireValue({
+      message: `${COLORS.cyan}Reviewer email:${COLORS.stop}`,
+      defaultValue: reviewerToUpdate.email,
+    }));
 
   reviewerToUpdate.checked =
     checked ??
-    (await inquireConfirm({ alternativeMessage: 'Is checked by default?', initialIsTrue: reviewerToUpdate.checked }));
+    (await inquireConfirm({
+      message: `${COLORS.cyan}Is checked by default?${COLORS.stop}`,
+      initialIsTrue: reviewerToUpdate.checked,
+    }));
 
   const config = loadConfig();
 
