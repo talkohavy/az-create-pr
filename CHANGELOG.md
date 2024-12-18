@@ -1,5 +1,11 @@
 # az-create-pr
 
+## 1.0.15
+
+### Patch Changes
+
+- Renamed 2 global variables: CLI_TOOL_NAME & toolNameBigText.
+
 ## 1.0.14
 
 ### Patch Changes
