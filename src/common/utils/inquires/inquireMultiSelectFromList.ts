@@ -19,8 +19,8 @@ export async function inquireMultiSelectFromList(props: InquireMultiSelectFromLi
 
   const selectedOptions = await checkbox({
     message,
-    theme: { prefix: '✨' },
     choices: [new Separator(), ...optionsArray, new Separator()],
+    theme: { prefix: '✨' },
   });
 
   return selectedOptions;
