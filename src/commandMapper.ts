@@ -5,7 +5,7 @@ import { currentContext } from './commands/current-context/current-context.js';
 import { deleteContext } from './commands/delete-context/delete-context.js';
 import { reviewer } from './commands/reviewer/reviewer.js';
 import { useContext } from './commands/use-context/use-context.js';
-import { Commands } from './common/constants/types.js';
+import { Commands } from './common/types.js';
 
 const COMMAND_MAPPER = {
   [Commands.CreateContext]: createContext,
