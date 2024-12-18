@@ -1,5 +1,5 @@
 import { Argv } from 'yargs';
-import { AZ_CREATE_PR_TOOL_NAME, OPEN_HELP_ERROR } from '../../common/constants/globals.js';
+import { CLI_TOOL_NAME, OPEN_HELP_ERROR } from '../../common/constants/globals.js';
 import { getContext } from '../../common/utils/getContext.js';
 import getConfig from './helpers/getConfig.js';
 import setConfig from './helpers/setConfig.js';
@@ -18,10 +18,7 @@ export const configBuilder: any = (yargs: Argv) => {
       type: 'string',
       description: 'Get value of a specific config part.',
     })
-    .example(
-      `${AZ_CREATE_PR_TOOL_NAME} config --get autoComplete`,
-      'Gets the configuration for autoCompleting the PR.',
-    );
+    .example(`${CLI_TOOL_NAME} config --get autoComplete`, 'Gets the configuration for autoCompleting the PR.');
 };
 
 type ConfigProps = {

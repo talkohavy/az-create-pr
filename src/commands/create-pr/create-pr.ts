@@ -1,6 +1,6 @@
 import { execSync } from 'child_process';
 import { COLORS } from '../../common/constants/colors.js';
-import { bigTextAzCreatePrTool } from '../../common/constants/globals.js';
+import { toolNameBigText } from '../../common/constants/globals.js';
 import {
   inquirePrTitle,
   inquireReviewers,
@@ -13,7 +13,7 @@ import { logger } from '../../common/utils/logger/logger.js';
 export async function createPR() {
   const context = getContext();
 
-  console.log(bigTextAzCreatePrTool);
+  console.log(toolNameBigText);
 
   if (!context) throw new Error('No context found!');
 

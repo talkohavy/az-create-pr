@@ -23,7 +23,7 @@ import {
   useContextDescription,
 } from './commands/use-context/use-context.js';
 import { COLORS } from './common/constants/colors.js';
-import { AZ_CREATE_PR_TOOL_NAME, bigTextAzCreatePrTool } from './common/constants/globals.js';
+import { CLI_TOOL_NAME, toolNameBigText } from './common/constants/globals.js';
 import { showVersion } from './common/utils/showVersion.js';
 
 const __no_op__: any = () => {};
@@ -31,7 +31,7 @@ const __no_op__: any = () => {};
 // A full description on each of the following functions is found under the `lvlup` project.
 const yargsInstance = yargs(hideBin(process.argv))
   .completion()
-  .scriptName(`${COLORS.green}${AZ_CREATE_PR_TOOL_NAME}${COLORS.stop}`)
+  .scriptName(`${COLORS.green}${CLI_TOOL_NAME}${COLORS.stop}`)
   .version(false)
   .command(configCommandString, configDescription, configBuilder)
   .command(reviewerCommandString, reviewerDescription, reviewerBuilder)
@@ -43,7 +43,7 @@ const yargsInstance = yargs(hideBin(process.argv))
     v: {
       alias: 'version',
       type: 'boolean',
-      description: `Show ${AZ_CREATE_PR_TOOL_NAME} version`,
+      description: `Show ${CLI_TOOL_NAME} version`,
       global: false,
       default: false,
     },
@@ -79,7 +79,7 @@ async function run() {
 
   if (flags.help) {
     const helpMenuAsText = await yargsInstance.getHelp();
-    const helpTextBig = `${bigTextAzCreatePrTool}${os.EOL}${os.EOL}${helpMenuAsText}`;
+    const helpTextBig = `${toolNameBigText}${os.EOL}${os.EOL}${helpMenuAsText}`;
     console.log(helpTextBig);
     process.exit(0);
   }

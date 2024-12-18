@@ -1,5 +1,5 @@
 import { Argv } from 'yargs';
-import { AZ_CREATE_PR_TOOL_NAME, OPEN_HELP_ERROR } from '../../common/constants/globals.js';
+import { CLI_TOOL_NAME, OPEN_HELP_ERROR } from '../../common/constants/globals.js';
 import { getContext } from '../../common/utils/getContext.js';
 import addReviewer from './helpers/addReviewer.js';
 import deleteReviewer from './helpers/deleteReviewer.js';
@@ -20,19 +20,19 @@ export const reviewerBuilder: any = (yargs: Argv) => {
       type: 'string',
       description: 'The name of the reviewer.',
     })
-    .example(`${AZ_CREATE_PR_TOOL_NAME} reviewer add --name Tal`, 'Adds a reviewer with name "Tal".');
+    .example(`${CLI_TOOL_NAME} reviewer add --name Tal`, 'Adds a reviewer with name "Tal".');
   yargs
     .option('email', {
       type: 'string',
       description: 'The email of the reviewer.',
     })
-    .example(`${AZ_CREATE_PR_TOOL_NAME} reviewer add --email talkohavy@gmail.com`, 'Adds a reviewer with email.');
+    .example(`${CLI_TOOL_NAME} reviewer add --email talkohavy@gmail.com`, 'Adds a reviewer with email.');
   yargs
     .option('checked', {
       type: 'boolean',
       description: 'Is the reviewer selected by default?',
     })
-    .example(`${AZ_CREATE_PR_TOOL_NAME} reviewer add --checked`, 'Mark the reviewer as checked by default.');
+    .example(`${CLI_TOOL_NAME} reviewer add --checked`, 'Mark the reviewer as checked by default.');
 };
 
 type ReviewerProps = {
