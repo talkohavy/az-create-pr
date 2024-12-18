@@ -1,5 +1,11 @@
 # az-create-pr
 
+## 1.0.16
+
+### Patch Changes
+
+- `create-pr` command refactored. Created a new inquire - inquireMultiSelectFromList. BUGFIX: inquireTargetBranch always defaulted to 'develop' - now fixed. inquireConfirm now requires a message, and is not named alternativeMessage anymore, just message. inquireValue isn't automatically default anymore internally. You need to color it yourself from outside.
+
 ## 1.0.15
 
 ### Patch Changes
