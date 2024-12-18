@@ -9,8 +9,8 @@ type InquireConfirmProps = {
   initialIsTrue?: boolean;
 };
 
-export async function inquireConfirm(props?: InquireConfirmProps) {
-  const { message, initialIsTrue } = (props ?? {}) as InquireConfirmProps;
+export async function inquireConfirm(props: InquireConfirmProps) {
+  const { message, initialIsTrue } = props;
 
   console.log('');
 
