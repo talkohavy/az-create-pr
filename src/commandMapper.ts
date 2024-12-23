@@ -5,6 +5,7 @@ import { currentContext } from './commands/current-context/current-context.js';
 import { deleteContext } from './commands/delete-context/delete-context.js';
 import { reviewer } from './commands/reviewer/reviewer.js';
 import { useContext } from './commands/use-context/use-context.js';
+import { OPEN_HELP_ERROR } from './common/constants/globals.js';
 import { Commands } from './common/types.js';
 
 const COMMAND_MAPPER = {
@@ -20,6 +21,7 @@ const COMMAND_MAPPER = {
 type commandMapperProps = {
   commands: Array<string>;
   flags: any;
+  helpMenu: string;
 };
 
 export async function commandMapper(props: commandMapperProps) {
@@ -31,7 +33,10 @@ export async function commandMapper(props: commandMapperProps) {
     const [command] = commands as [Commands];
 
     await COMMAND_MAPPER[command]({ commands, ...flags });
-  } catch (_error) {
-    _error;
+  } catch (error: any) {
+    if (error.message === OPEN_HELP_ERROR) {
+      console.log(props.helpMenu);
+      process.exit(0);
+    }
   }
 }

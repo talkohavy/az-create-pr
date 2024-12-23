@@ -77,14 +77,15 @@ async function run() {
     process.exit(0);
   }
 
+  const mainHelpMenuAsText = await yargsInstance.getHelp();
+  const mainHelpMenuWithBigTitle = `${toolNameBigText}${os.EOL}${os.EOL}${mainHelpMenuAsText}`;
+
   if (flags.help) {
-    const helpMenuAsText = await yargsInstance.getHelp();
-    const helpTextBig = `${toolNameBigText}${os.EOL}${os.EOL}${helpMenuAsText}`;
-    console.log(helpTextBig);
+    console.log(mainHelpMenuWithBigTitle);
     process.exit(0);
   }
 
-  await commandMapper({ commands, flags });
+  await commandMapper({ commands, flags, helpMenu: mainHelpMenuWithBigTitle });
 }
 
 run();
