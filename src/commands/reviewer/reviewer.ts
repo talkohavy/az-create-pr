@@ -21,6 +21,7 @@ export const reviewerDescription = `CRUD operations on a reviewer. Allowed sub-c
 
 export const reviewerBuilder: any = (yargs: Argv) => {
   yargs.positional('CRUD', {
+    alias: 'crud',
     choices: ['add', 'update', 'delete'],
     describe: 'sub-command to execute.',
     type: 'string',
