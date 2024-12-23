@@ -3,6 +3,7 @@ import path from 'path';
 import { COLORS } from './colors.js';
 
 export const CLI_TOOL_NAME = 'az-create-pr';
+export const CLI_TOOL_NAME_COLORED = `${COLORS.blue}az-create-pr${COLORS.stop}`;
 export const CONFIG_PATH = path.join(os.homedir(), `.${CLI_TOOL_NAME}`, 'config.json');
 export const OPEN_HELP_ERROR = 'OPEN_HELP';
 
