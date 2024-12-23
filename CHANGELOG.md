@@ -1,5 +1,12 @@
 # az-create-pr
 
+## 1.0.17
+
+### Patch Changes
+
+- Added help menu on error. Given that a special error is thrown, a help menu will be displayed to the user.
+- The `reviewer` command now has clear documentation. With colored sub-commands, and many examples to guide the user on how to use it.
+
 ## 1.0.16
 
 ### Patch Changes
