@@ -1,5 +1,11 @@
 # az-create-pr
 
+## 1.0.18
+
+### Patch Changes
+
+- When adding a reviewer, the tool now inquires for the email first, to note that this is the most important part. Next up, it inquires the name, and makes sure the user understands it's just an alias / nickname, and not something important for az.
+
 ## 1.0.17
 
 ### Patch Changes
