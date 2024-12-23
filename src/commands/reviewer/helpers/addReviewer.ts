@@ -23,8 +23,8 @@ export default async function addReviewer(props: AddReviewerProps) {
     return;
   }
 
-  const reviewerName = name || (await inquireValue({ message: `${COLORS.cyan}Reviewer name:${COLORS.stop}` }));
   const reviewerEmail = email || (await inquireValue({ message: `${COLORS.cyan}Reviewer email:${COLORS.stop}` }));
+  const reviewerName = name || (await inquireValue({ message: `${COLORS.cyan}Reviewer name / alias:${COLORS.stop}` }));
   const reviewerChecked =
     checked ?? (await inquireConfirm({ message: `${COLORS.cyan}Is checked by default?${COLORS.stop}` }));
 
