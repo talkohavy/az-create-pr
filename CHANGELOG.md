@@ -1,5 +1,11 @@
 # az-create-pr
 
+## 1.0.20
+
+### Patch Changes
+
+- Added a command to open a pr in the browser, if one exists. Command is used like this: `cpr open`.
+
 ## 1.0.19
 
 ### Patch Changes
