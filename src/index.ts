@@ -16,6 +16,7 @@ import {
   deleteContextCommandString,
   deleteContextDescription,
 } from './commands/delete-context/delete-context.js';
+import { openCommandString, openDescription } from './commands/open-in-browser/open-in-browser.js';
 import { reviewerBuilder, reviewerCommandString, reviewerDescription } from './commands/reviewer/reviewer.js';
 import {
   useContextBuilder,
@@ -39,6 +40,7 @@ const yargsInstance = yargs(hideBin(process.argv))
   .command(useContextCommandString, useContextDescription, useContextBuilder)
   .command(currentContextCommandString, currentContextDescription, __no_op__)
   .command(deleteContextCommandString, deleteContextDescription, deleteContextBuilder)
+  .command(openCommandString, openDescription, __no_op__)
   .options({
     v: {
       alias: 'version',

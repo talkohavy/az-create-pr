@@ -7,4 +7,5 @@ export enum Commands {
   Config = 'config',
   Reviewer = 'reviewer',
   Main = 'main',
+  Open = 'open',
 }

@@ -20,6 +20,7 @@
     "dev-use-context": "node dist/index.js use-context",
     "dev-current-context": "node dist/index.js current-context",
     "dev-delete-context": "node dist/index.js delete-context",
+    "dev-open": "node dist/index.js open",
     "dev": "node dist/index.js"
   },
   "contributors": ["Tal Kohavy <talkohavy@gmail.com> (@Tal Kohavy)"],

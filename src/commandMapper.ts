@@ -3,6 +3,7 @@ import { createContext } from './commands/create-context/create-context.js';
 import { createPR } from './commands/create-pr/create-pr.js';
 import { currentContext } from './commands/current-context/current-context.js';
 import { deleteContext } from './commands/delete-context/delete-context.js';
+import { openInBrowser } from './commands/open-in-browser/open-in-browser.js';
 import { reviewer } from './commands/reviewer/reviewer.js';
 import { useContext } from './commands/use-context/use-context.js';
 import { OPEN_HELP_ERROR } from './common/constants/globals.js';
@@ -16,6 +17,7 @@ const COMMAND_MAPPER = {
   [Commands.Config]: config,
   [Commands.Reviewer]: reviewer,
   [Commands.Main]: createPR,
+  [Commands.Open]: openInBrowser,
 };
 
 type commandMapperProps = {
