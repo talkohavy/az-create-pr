@@ -2,7 +2,7 @@
   "name": "az-create-pr",
   "version": "1.0.20",
   "description": "A cli tool for creating a PR in azure",
-  "main": "index.js",
+  "main": "only-the-path-in-bin-matters-in-cli.js",
   "type": "module",
   "private": true,
   "bin": "./index.js",
